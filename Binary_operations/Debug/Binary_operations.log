@@ -1,0 +1,4 @@
+﻿  Binary_operations.cpp
+C:\Users\Foxxy\source\repos\Siaod_3_sem\Binary_operations\Binary_operations.cpp(34,33): warning C4554: "<<": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+C:\Users\Foxxy\source\repos\Siaod_3_sem\Binary_operations\Binary_operations.cpp(108,27): warning C4018: <: несоответствие типов со знаком и без знака
+  Binary_operations.vcxproj -> C:\Users\Foxxy\source\repos\Siaod_3_sem\Debug\Binary_operations.exe
