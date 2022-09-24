@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Binary_operations", "Binary_operations\Binary_operations.vcxproj", "{A61F50DC-7235-4127-BB62-CBB7FACD175F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hashing", "Hashing\Hashing.vcxproj", "{D170E333-A7F5-4E05-97F3-21EA77738CDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{A61F50DC-7235-4127-BB62-CBB7FACD175F}.Release|x64.Build.0 = Release|x64
 		{A61F50DC-7235-4127-BB62-CBB7FACD175F}.Release|x86.ActiveCfg = Release|Win32
 		{A61F50DC-7235-4127-BB62-CBB7FACD175F}.Release|x86.Build.0 = Release|Win32
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Debug|x64.ActiveCfg = Debug|x64
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Debug|x64.Build.0 = Debug|x64
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Debug|x86.ActiveCfg = Debug|Win32
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Debug|x86.Build.0 = Debug|Win32
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Release|x64.ActiveCfg = Release|x64
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Release|x64.Build.0 = Release|x64
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Release|x86.ActiveCfg = Release|Win32
+		{D170E333-A7F5-4E05-97F3-21EA77738CDF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
