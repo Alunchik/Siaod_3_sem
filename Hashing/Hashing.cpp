@@ -98,7 +98,6 @@ private:
                 }
             }
         }
-        cout << "table rehashed. size now: " << size << endl;
     }
 };
 
