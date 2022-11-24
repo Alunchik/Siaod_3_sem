@@ -21,6 +21,30 @@ int max(int a, int b)
 {
 	return (a > b) ? a : b;
 }
+
+void print_level(node*p, int n, int level, int prob) { //печать одного уровня дерева
+	if (p) {
+		if (level == n) {
+			for (int i = 1; i <= prob; i++) cout << " ";
+			cout << p->key;
+		}
+		else {
+			print_level(p->right, n, level + 1, prob);
+			print_level(p->left, n, level + 1, prob);
+		}
+	}
+}
+
+void print(node* p) { //красивый вывод
+	int h = p->height;
+	int prob = 3;
+	if (p) {
+		for (int i = 0; i <= h; i++) {
+			print_level(p, i, 0, prob * (h - i));
+			cout << endl;
+		}
+	}
+}
 node* newNode(int key)
 {
 	node* nod = new node();
@@ -150,7 +174,8 @@ int main() {
 		cout << "2 - симметричный обход\n";
 		cout << "3 - среднее арифметическое\n";
 		cout << "4 - высота дерева\n";
-		cout << "0 - выход\n";
+		cout << "5 -наглядный вывод дерева\n";
+		cout << "6 - выход\n";
 		cin >> command;
 		switch (command) {
 		case 1:
@@ -172,9 +197,13 @@ int main() {
 			break;
 		case 4:
 			cout << height(root);
+			break;
 		case 5:
+			print(root);
+		case 6:
 			return 0;
 		}
+		
 	}
 	return 0;
 }

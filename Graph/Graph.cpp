@@ -8,7 +8,7 @@ struct Edge { //ребро графа
     int destination; // Конечная вершина
     int weight; //вес ребра
 
-    Edge(){} // конструкторы
+    Edge() {} // конструкторы
     Edge(int source, int destination, int weight) {
         this->source = source;
         this->destination = destination;
@@ -25,6 +25,7 @@ private:
     int edgesNum;  // количество ребер в графе
     vector<Edge> edges; // массив ребер 
     int** matrix; // матрица смежности
+    vector<Edge*> graph; //минимальный остовный граф
 public:
     Graph(int vnum, int edgnum) { //конструктор, аргументы - числа вершин и ребер
         this->verticesNum = vnum;
@@ -41,14 +42,14 @@ public:
             edges.push_back(e); // добавляем его в наш массив
         }
 
-        this->matrix = new int*[verticesNum]; //создаем матрицу смежности
-        for (int i = 0; i < verticesNum; i++) {
-            this->matrix[i] = new int[verticesNum];
+        this->matrix = new int* [verticesNum+1]; //создаем матрицу смежности
+        for (int i = 0; i <= verticesNum; i++) {
+            this->matrix[i] = new int[verticesNum+1];
         }
-        for (int i = 0; i < verticesNum; i++) {
-            for (int j = 0; j < verticesNum; j++) {
+        for (int i = 0; i <= verticesNum; i++) {
+            for (int j = 0; j <= verticesNum; j++) {
                 this->matrix[i][j] = 0;
-        }
+            }
         }
         for (int i = 0; i < edges.size(); i++) {
             Edge edge = edges[i];
@@ -57,10 +58,51 @@ public:
         }
     }
 
-
-    Edge* primAlg(int start) { //алгоритм прима
-            vector not_used
+    void printGraph() {
+        for (int i = 0; i < graph.size(); i++) {
+            graph[i]->print();
         }
+    }
+
+    bool isValidEdge(int x, int y, bool* flag)
+    {
+        if (x == y) // одна и та же вершина
+            return false;
+        if (!flag[x] && !flag[y]) // ни одна вершина не участвует в остовном графе
+            return false;
+        else if (flag[x] && flag[y]) // две вершины уже есть в остовном графе
+            return false;
+        else {
+            return true;
+        }
+    }
+
+    void primMST() {
+        bool* flag = new bool[verticesNum+1]; // массив обработанных вершин. Изначально все не обработаны:
+        memset(flag, false, verticesNum + 1);
+        flag[0] = true; // посещаем начальную вершину
+        int count = 0;
+        while (count < verticesNum - 1) {
+            int min = INT_MAX, a = -1, b = -1;
+            for (int i = 0; i < verticesNum; i++) {
+                for (int j = 0; j < verticesNum + 1; j++) {
+                    if (matrix[i][j] < min) {
+                        if ((isValidEdge(i, j, flag)) && matrix[i][j]) {
+                            min = matrix[i][j];
+                            a = i;
+                            b = j;
+                        }
+                    }
+                }
+            }
+            if (a != -1 && b != -1) {
+                graph.push_back(new Edge(a, b, matrix[a][b]));
+                cout << a << " - " << b << " : " << matrix[a][b] << endl;
+                flag[b] = flag[a] = true;
+            }
+            count++;
+        }
+    }
 };
 
 
@@ -68,5 +110,11 @@ public:
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Введите число вершин и ребер";
+    int a, b;
+    cin >> a >> b;
+    Graph g(a,b);
+    g.primMST();
+    cout << "Остовный граф:";
+    g.printGraph();
 }
