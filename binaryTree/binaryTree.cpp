@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 using namespace std;
 using namespace std;
+setlocale(LC_ALL, "Russian");
 class node
 {
 public:

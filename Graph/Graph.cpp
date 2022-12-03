@@ -1,8 +1,8 @@
 ﻿#include <iostream>
 #include <vector>
+#include <locale.h>
 
 using namespace std;
-
 struct Edge { //ребро графа
     int source; // Исходная вершина
     int destination; // Конечная вершина
@@ -15,7 +15,7 @@ struct Edge { //ребро графа
         this->weight = weight;
     }
     void print() {
-        cout << source << "<------>" << destination << "\t(" << weight << ")" << endl;
+        cout << source+1 << "<------>" << destination+1 << "\t(" << weight << ")" << endl;
     }
 };
 
@@ -38,7 +38,7 @@ public:
             // считываем информацию о каждом ребре
             cout << "Введите 2 вершины и вес ребра: ";
             cin >> x >> y >> w;
-            Edge e(x, y, w); // создаем объекта классы ребра
+            Edge e(x-1, y-1, w); // создаем объекта классы ребра
             edges.push_back(e); // добавляем его в наш массив
         }
 
@@ -77,7 +77,7 @@ public:
         }
     }
 
-    void primMST() {
+    void primAlg() {
         bool* flag = new bool[verticesNum+1]; // массив обработанных вершин. Изначально все не обработаны:
         memset(flag, false, verticesNum + 1);
         flag[0] = true; // посещаем начальную вершину
@@ -110,11 +110,12 @@ public:
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     cout << "Введите число вершин и ребер";
     int a, b;
     cin >> a >> b;
     Graph g(a,b);
-    g.primMST();
+    g.primAlg();
     cout << "Остовный граф:";
     g.printGraph();
 }
