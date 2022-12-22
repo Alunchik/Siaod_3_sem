@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 using namespace std;
 using namespace std;
-setlocale(LC_ALL, "Russian");
 class node
 {
 public:
@@ -167,6 +166,8 @@ double average(node* node)
 	return ((double)s) / ((double)c);
 }
 int main() {
+
+	setlocale(LC_ALL, "Russian");
 	node* root = NULL;
 	int sum = 0, command = -1, input = 0;
 	while (command != 0) {
